@@ -1,7 +1,9 @@
+import LoginForm from '../../modules/LoginForm/LoginForm';
+
 const LoginPage = () => {
   return (
     <>
-      <p>LoginPage</p>
+      <LoginForm />
     </>
   );
 };
