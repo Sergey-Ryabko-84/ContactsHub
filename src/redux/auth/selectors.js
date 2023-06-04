@@ -4,4 +4,5 @@ export const selectAuth = ({ auth }) => {
   const { isLoggedIn, accessToken, refreshToken } = auth;
   return { isLoggedIn, accessToken, refreshToken };
 };
-export const selectIsRefreshing = ({ auth }) => auth.isRefreshing;
+export const selectIsLoading = ({ auth }) => auth.isLoading;
+export const selectError = ({ auth }) => auth.error;

@@ -37,8 +37,8 @@ export const logout = createAsyncThunk(
   }
 );
 
-export const current = createAsyncThunk(
-  'auth/current',
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
