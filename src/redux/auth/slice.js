@@ -1,4 +1,4 @@
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
   user: { id: null, name: null, email: null, avatarURL: null },
@@ -9,8 +9,14 @@ const initialState = {
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => builder,
+  reducers: {
+    setRefreshToken(state, { payload }) {
+      state.refreshToken = payload;
+    },
+  },
+  extraReducers: builder => builder,
 });
+
+export const { setRefreshToken } = authSlice.actions;
