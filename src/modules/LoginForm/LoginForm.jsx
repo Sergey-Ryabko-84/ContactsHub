@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import fields from './fields';
 import initialState from './initialState';
 import { login } from '../../redux/auth/operations';
+import { FormWrapper } from './LoginForm.styled';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,11 @@ const LoginForm = () => {
   const { email, password } = state;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormWrapper onSubmit={handleSubmit}>
       <TextField value={email} onChange={handleChange} {...fields.email} />
       <TextField value={password} onChange={handleChange} {...fields.password} />
       <Button>Login</Button>
-    </form>
+    </FormWrapper>
   );
 };
 
