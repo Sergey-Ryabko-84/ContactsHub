@@ -6,12 +6,12 @@ export const Submit = styled.button`
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background-color: #f86033;
+  background-color: #ff6534;
   color: #fff;
 
   :hover,
   :focus {
-    background-color: #dd5027;
+    background-color: #dd5626;
   }
 
   :active {
