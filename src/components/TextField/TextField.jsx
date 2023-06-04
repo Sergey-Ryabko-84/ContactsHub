@@ -1,8 +1,10 @@
+import { Input, InputWrapper } from "./TextField.styled";
+
 const TextField = ({ ...props }) => {
   return (
-    <div>
-      <input {...props} />
-    </div>
+    <InputWrapper>
+      <Input {...props} />
+    </InputWrapper>
   );
 };
 

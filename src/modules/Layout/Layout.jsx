@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { LayoutWrapper } from './Layout.styled';
 
 const Layout = () => {
   return (
-    <>
-      <p>Layout</p>
+    <LayoutWrapper>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-    </>
+    </LayoutWrapper>
   );
 };
 

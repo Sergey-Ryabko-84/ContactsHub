@@ -1,8 +1,10 @@
+import { Submit } from "./Button.styled";
+
 const Button = ({ type = 'submit', children }) => {
   return (
-    <button type={type}>
+    <Submit type={type}>
       {children}
-    </button>
+    </Submit>
   );
 };
 
