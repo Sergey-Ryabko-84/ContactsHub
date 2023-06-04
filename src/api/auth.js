@@ -1,7 +1,4 @@
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAuth } from '../redux/auth/selectors';
-import { setRefreshToken } from '../redux/auth/slice';
 
 const instance = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
@@ -15,13 +12,12 @@ const setToken = token => {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    const dispatch = useDispatch();
     if (error.response.status === 401) {
-      const { refreshToken } = useSelector(selectAuth);
+      let { refreshToken } = JSON.parse(localStorage.getItem('persist:auth'));
+      refreshToken = refreshToken.slice(1, refreshToken.length - 1);
       try {
         const { data } = await instance.post('/api/auth/refresh', { refreshToken });
-        setToken(data.accessToken);
-        dispatch(setRefreshToken(data.refreshToken));
+        error.config.headers.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
         return Promise.reject(error);
