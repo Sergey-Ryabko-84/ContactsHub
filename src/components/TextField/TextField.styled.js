@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const InputWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 48px;
-  margin-bottom: 24px;
+  height: 52px;
+  margin-bottom: 26px;
 `;
 
 export const Input = styled.input`
