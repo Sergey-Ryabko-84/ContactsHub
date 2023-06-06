@@ -88,6 +88,7 @@ export const Button = styled.div`
   padding: 14px;
   border-radius: 8px;
   border: 1px solid #c9c9c9;
+  transition: background-color 250ms;
 
   :hover,
   :focus {

@@ -8,6 +8,7 @@ export const Submit = styled.button`
   border: none;
   background-color: #ff6534;
   color: #fff;
+  transition: background-color 250ms;
 
   :hover,
   :focus {
