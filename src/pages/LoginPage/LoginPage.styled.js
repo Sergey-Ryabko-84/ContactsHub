@@ -85,7 +85,6 @@ export const Button = styled.div`
   position: relative;
   width: 100%;
   height: 52px;
-  padding: 14px;
   border-radius: 8px;
   border: 1px solid #c9c9c9;
   transition: background-color 250ms;
@@ -98,6 +97,13 @@ export const Button = styled.div`
   :active {
     background-color: #ffbaa8;
   }
+`;
+
+export const ButtonLink = styled.a`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 14px;
 `;
 
 export const ButtonTitle = styled.span`

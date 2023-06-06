@@ -2,6 +2,7 @@ import RegisterForm from '../../modules/RegisterForm/RegisterForm';
 import {
   AlternateWrapper,
   Button,
+  ButtonLink,
   ButtonTitle,
   Divider,
   FormSection,
@@ -29,10 +30,10 @@ const RegisterPage = () => {
         </Divider>
         <AlternateWrapper>
           <Button>
-            <a href={`${process.env.REACT_APP_API_URL}/api/auth/google`}>
+            <ButtonLink href={`${process.env.REACT_APP_API_URL}/api/auth/google`}>
               <GoogleIcon size={22} />
               <ButtonTitle>Continue with Google</ButtonTitle>
-            </a>
+            </ButtonLink>
           </Button>
         </AlternateWrapper>
       </FormSection>
