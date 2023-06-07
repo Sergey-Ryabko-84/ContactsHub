@@ -55,3 +55,8 @@ export const getCurrent = async token => {
     throw error;
   }
 };
+
+export const googleAuth = async () => {
+    await instance.get('/api/auth/google');
+    return true;
+};

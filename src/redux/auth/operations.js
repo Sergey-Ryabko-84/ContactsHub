@@ -57,3 +57,15 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
+
+export const googleAuth = createAsyncThunk(
+  'auth/google',
+  async (_, { rejectWithValue }) => {
+    try {
+      const result = await api.googleAuth();
+      return result;
+    } catch ({ response }) {
+      return rejectWithValue(response.data);
+    }
+  }
+);

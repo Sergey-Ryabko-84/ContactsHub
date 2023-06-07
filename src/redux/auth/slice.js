@@ -1,10 +1,11 @@
-import { createSlice, isAllOf, isAnyOf } from '@reduxjs/toolkit';
-import { login, logout, refreshUser, register } from './operations';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { googleAuth, login, logout, refreshUser, register } from './operations';
 
-const extraOperations = [login, logout, refreshUser, register];
+const extraOperations = [googleAuth, login, logout, refreshUser, register];
 
-const getOperations = type =>
-  isAllOf(...extraOperations.map(operation => operation[type]));
+const getOperations = type => {
+  return isAnyOf(...extraOperations.map(operation => operation[type]));
+};
 
 const initialState = {
   user: {},
@@ -31,7 +32,6 @@ export const authSlice = createSlice({
         state.refreshToken = '';
         state.accessToken = '';
         state.isLoggedIn = false;
-        state.isLoading = false;
       })
       .addCase(refreshUser.rejected, state => {
         state.refreshToken = '';
@@ -48,9 +48,11 @@ export const authSlice = createSlice({
           state.refreshToken = payload.refreshToken;
           state.accessToken = payload.accessToken;
           state.isLoggedIn = true;
-          state.isLoading = false;
         }
       )
+      .addMatcher(getOperations('fulfilled'), state => {
+        state.isLoading = false;
+      })
       .addMatcher(getOperations('rejected'), (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
@@ -58,4 +60,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setTokens } = authSlice.actions
+export const { setTokens } = authSlice.actions;
