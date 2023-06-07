@@ -6,12 +6,14 @@ import AuthLayout from './modules/AuthLayout/AuthLayout';
 
 function App() {
   return (
-    <AuthLayout>
+    <>
       <GlobalStyle />
       <BrowserRouter>
-        <AppRoutes />
+        <AuthLayout>
+          <AppRoutes />
+        </AuthLayout>
       </BrowserRouter>
-    </AuthLayout>
+    </>
   );
 }
 
