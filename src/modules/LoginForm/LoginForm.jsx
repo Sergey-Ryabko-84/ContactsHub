@@ -1,18 +1,15 @@
-import { useDispatch } from 'react-redux';
-import Button from '../../components/Button/Button';
+import { useSelector } from 'react-redux';
+import Button from '../../components/Buttons/Button/Button';
 import TextField from '../../components/TextField/TextField';
-import useForm from '../../hooks/useForm';
 import fields from './fields';
+import Loader from '../../components/Loader/Loader';
+import useForm from '../../hooks/useForm';
 import initialState from './initialState';
-import { login } from '../../redux/auth/operations';
 import { FormWrapper } from './LoginForm.styled';
+import { selectIsLoading } from '../../redux/auth/selectors';
 
-const LoginForm = () => {
-  const dispatch = useDispatch();
-
-  const onSubmit = data => {
-    dispatch(login(data));
-  };
+const LoginForm = ({ onSubmit, displaySpinner = false }) => {
+  const isLoading = useSelector(selectIsLoading);
   const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
   const { email, password } = state;
 
@@ -20,7 +17,12 @@ const LoginForm = () => {
     <FormWrapper onSubmit={handleSubmit}>
       <TextField value={email} onChange={handleChange} {...fields.email} />
       <TextField value={password} onChange={handleChange} {...fields.password} />
-      <Button>Login</Button>
+      <Button disabled={isLoading}>
+        {displaySpinner && (
+          <Loader size={22} position="absolute" top="15px" left="96px" />
+        )}
+        Login
+      </Button>
     </FormWrapper>
   );
 };

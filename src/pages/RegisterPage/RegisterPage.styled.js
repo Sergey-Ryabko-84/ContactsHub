@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
 import { TiContacts } from 'react-icons/ti';
 
 export const PageWrapper = styled.div`
@@ -79,39 +78,4 @@ export const Span = styled.span`
 export const AlternateWrapper = styled.div`
   width: 100%;
   padding: 0 40px;
-`;
-
-export const Button = styled.div`
-  position: relative;
-  width: 100%;
-  height: 52px;
-  border-radius: 8px;
-  border: 1px solid #c9c9c9;
-  transition: background-color 250ms;
-
-  :hover,
-  :focus {
-    background-color: #ffe3dc;
-  }
-
-  :active {
-    background-color: #ffbaa8;
-  }
-`;
-
-export const ButtonLink = styled.a`
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  padding: 14px;
-`;
-
-export const ButtonTitle = styled.span`
-  display: inline-block;
-  padding: 2px 40px;
-`;
-
-export const GoogleIcon = styled(FcGoogle)`
-  position: absolute;
-  left: 16px;
 `;

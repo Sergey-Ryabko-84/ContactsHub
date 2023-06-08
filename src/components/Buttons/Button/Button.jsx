@@ -1,8 +1,8 @@
 import { Submit } from "./Button.styled";
 
-const Button = ({ type = 'submit', children }) => {
+const Button = ({ type = 'submit', disabled = false, children }) => {
   return (
-    <Submit type={type}>
+    <Submit type={type} disabled={disabled}>
       {children}
     </Submit>
   );

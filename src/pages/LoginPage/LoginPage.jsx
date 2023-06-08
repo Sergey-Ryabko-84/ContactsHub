@@ -1,12 +1,11 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from '../../modules/LoginForm/LoginForm';
+import GoogleButton from '../../components/Buttons/GoogleButton/GoogleButton';
 import {
   AlternateWrapper,
-  Button,
-  ButtonLink,
-  ButtonTitle,
   Divider,
   FormSection,
-  GoogleIcon,
   Link,
   LogoIcon,
   PageWrapper,
@@ -14,14 +13,32 @@ import {
   Text,
   Title,
 } from './LoginPage.styled';
+import { selectIsLoading } from '../../redux/auth/selectors';
+import { googleAuth, login } from '../../redux/auth/operations';
 
 const LoginPage = () => {
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+
+  const onLogin = data => {
+    dispatch(login(data));
+  };
+
+  const onGoogleAuth = () => {
+    setIsGoogleLoading(true);
+    dispatch(googleAuth());
+  };
+
   return (
     <PageWrapper>
       <FormSection>
         <LogoIcon size={42} />
         <Title>Welcome back</Title>
-        <LoginForm />
+        <LoginForm
+          onSubmit={onLogin}
+          displaySpinner={isLoading && !isGoogleLoading}
+        />
         <Text>
           Already have an account? <Link to="/auth/register">Register</Link>
         </Text>
@@ -29,12 +46,10 @@ const LoginPage = () => {
           <Span>or</Span>
         </Divider>
         <AlternateWrapper>
-          <Button>
-            <ButtonLink href={`${process.env.REACT_APP_API_URL}/api/auth/google`}>
-              <GoogleIcon size={22} />
-              <ButtonTitle>Continue with Google</ButtonTitle>
-            </ButtonLink>
-          </Button>
+          <GoogleButton
+            onClick={onGoogleAuth}
+            displaySpinner={isLoading && isGoogleLoading}
+          />
         </AlternateWrapper>
       </FormSection>
     </PageWrapper>
