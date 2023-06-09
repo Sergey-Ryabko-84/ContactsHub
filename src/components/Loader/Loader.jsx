@@ -7,16 +7,18 @@ const Loader = ({
   position = 'static',
   top = 'auto',
   left = 'auto',
-}) => (
-  <SpinnerWrapper position={position} top={top} left={left}>
-    <RotatingLines
-      strokeColor={color}
-      strokeWidth="5"
-      animationDuration="0.75"
-      width={size}
-      visible={true}
-    />
-  </SpinnerWrapper>
-);
+}) => {
+  return (
+    <SpinnerWrapper position={position} top={top} left={left}>
+      <RotatingLines
+        strokeColor={color}
+        strokeWidth="5"
+        animationDuration="0.75"
+        width={size}
+        visible={true}
+      />
+    </SpinnerWrapper>
+  );
+};
 
 export default Loader;

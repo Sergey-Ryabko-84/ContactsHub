@@ -15,6 +15,7 @@ import {
 } from './LoginPage.styled';
 import { selectIsLoading } from '../../redux/auth/selectors';
 import { googleAuth, login } from '../../redux/auth/operations';
+import ConnectionWaitingMsg from '../../components/ConnectionWaitingMsg/ConnectionWaitingMsg';
 
 const LoginPage = () => {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -51,6 +52,7 @@ const LoginPage = () => {
             displaySpinner={isLoading && isGoogleLoading}
           />
         </AlternateWrapper>
+        {isLoading && <ConnectionWaitingMsg />}
       </FormSection>
     </PageWrapper>
   );
