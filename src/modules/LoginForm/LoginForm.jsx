@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../../components/Buttons/Button/Button';
 import TextField from '../../components/TextField/TextField';
@@ -7,7 +8,6 @@ import useForm from '../../hooks/useForm';
 import initialState from './initialState';
 import { FormWrapper } from './LoginForm.styled';
 import { selectIsLoading } from '../../redux/auth/selectors';
-import { useEffect, useState } from 'react';
 
 const LoginForm = ({ onSubmit, displaySpinner = false }) => {
   const isLoading = useSelector(selectIsLoading);
@@ -27,8 +27,18 @@ const LoginForm = ({ onSubmit, displaySpinner = false }) => {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <TextField value={email} onChange={handleChange} {...fields.email} />
-      <TextField value={password} onChange={handleChange} {...fields.password} />
+      <TextField
+        value={email}
+        onChange={handleChange}
+        isValid={isEmailValid}
+        {...fields.email}
+      />
+      <TextField
+        value={password}
+        onChange={handleChange}
+        isValid={isPasswordValid}
+        {...fields.password}
+      />
       <Button disabled={isLoading || !isEmailValid || !isPasswordValid}>
         {displaySpinner && (
           <Loader size={22} position="absolute" top="15px" left="96px" />
