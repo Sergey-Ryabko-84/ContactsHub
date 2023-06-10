@@ -40,4 +40,5 @@ export const ButtonTitle = styled.span`
 
 export const GoogleIcon = styled(FcGoogle)`
   position: absolute;
+  opacity: ${props => (props.loading === 'true' ? 0.5 : 1)};
 `;

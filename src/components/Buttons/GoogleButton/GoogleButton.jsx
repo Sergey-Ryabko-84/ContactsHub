@@ -12,7 +12,7 @@ const GoogleButton = ({ type = 'button', onClick, displaySpinner = false }) => {
         {displaySpinner ? (
           <Loader size={22} position="absolute" />
         ) : (
-          <GoogleIcon size={22} />
+          <GoogleIcon size={22} loading={isLoading.toString()} />
         )}
         <ButtonTitle>Continue with Google</ButtonTitle>
       </ButtonLink>
