@@ -4,7 +4,7 @@ import RestrictedRoute from './modules/Routes/RestrictedRoute ';
 import PrivateRoute from './modules/Routes/PrivateRoute';
 import Layout from './modules/Layout/Layout';
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"))
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
@@ -15,8 +15,8 @@ const AppRoutes = () => {
     <Suspense fallback={<p>...Load page</p>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
           <Route element={<RestrictedRoute redirectTo="/app/contacts" />}>
+            <Route index element={<HomePage />} />
             <Route path="auth/register" element={<RegisterPage />} />
             <Route path="auth/login" element={<LoginPage />} />
           </Route>
