@@ -1,5 +1,5 @@
 import { HiOutlineUser, HiOutlineMail, HiOutlineKey } from 'react-icons/hi';
-import { IconWrapper } from './Icon.styled copy';
+import { IconWrapper } from './Icon.styled';
 
 const Icon = ({ name }) => {
   return (
