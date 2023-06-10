@@ -3,6 +3,7 @@ import Icon from './Icon/Icon';
 import PasswordDisplayButton from './PasswordDisplayButton/PasswordDisplayButton';
 import ValidationIcon from './ValidationIcon/ValidationIcon';
 import { Input, InputWrapper } from './TextField.styled';
+import ErrorMsg from './ErrorMsg/ErrorMsg';
 
 const TextField = ({ ...props }) => {
   const [fieldIsValid, setFieldIsValid] = useState(null);
@@ -40,6 +41,7 @@ const TextField = ({ ...props }) => {
         />
       )}
       <ValidationIcon fieldIsValid={fieldIsValid} />
+      <ErrorMsg name={props.name} fieldIsValid={fieldIsValid} />
     </InputWrapper>
   );
 };
