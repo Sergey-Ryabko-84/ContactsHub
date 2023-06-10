@@ -1,26 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { refreshUser } from '../../redux/auth/operations';
-import { useLocation } from 'react-router-dom';
 import { setTokens } from '../../redux/auth/slice';
 
 const AuthLayout = ({ children }) => {
   const dispatch = useDispatch();
-  const location = useLocation();
+  const [queryParams] = useSearchParams();
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-
     const refreshToken = queryParams.get('refreshToken');
     const accessToken = queryParams.get('accessToken');
 
     if (refreshToken) {
-      console.log(refreshToken, accessToken);
       dispatch(setTokens({ refreshToken, accessToken }));
     }
 
     dispatch(refreshUser());
-  }, [dispatch, location]);
+  }, [dispatch, queryParams]);
 
   return children;
 };
