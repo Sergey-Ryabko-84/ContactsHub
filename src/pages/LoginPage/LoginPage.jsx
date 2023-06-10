@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from '../../modules/LoginForm/LoginForm';
 import GoogleButton from '../../components/Buttons/GoogleButton/GoogleButton';
@@ -18,7 +19,10 @@ import { googleAuth, login } from '../../redux/auth/operations';
 import ConnectionWaitingMsg from '../../components/ConnectionWaitingMsg/ConnectionWaitingMsg';
 
 const LoginPage = () => {
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const location = useLocation();
+  const [isGoogleLoading, setIsGoogleLoading] = useState(
+    location.state?.isGoogleLoading ?? false
+  );
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
@@ -41,7 +45,10 @@ const LoginPage = () => {
           displaySpinner={isLoading && !isGoogleLoading}
         />
         <Text>
-          Already have an account? <Link to="/auth/register">Register</Link>
+          Already have an account?{' '}
+          <Link to="/auth/register" state={{ isGoogleLoading }}>
+            Register
+          </Link>
         </Text>
         <Divider>
           <Span>or</Span>
