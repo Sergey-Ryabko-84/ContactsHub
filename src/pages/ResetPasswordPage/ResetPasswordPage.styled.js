@@ -34,6 +34,7 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
+  margin-bottom: 20px;
   padding: 0 50px;
   text-align: center;
   font-size: 14px;
@@ -41,6 +42,7 @@ export const Text = styled.p`
 `;
 
 export const Link = styled(NavLink)`
+  margin-top: 12px;
   padding: 4px;
   font-size: 14px;
   font-weight: 500;

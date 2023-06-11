@@ -57,6 +57,11 @@ export const getCurrent = async token => {
 };
 
 export const googleAuth = async () => {
-    await instance.get('/api/auth/google');
-    return true;
+  await instance.get('/api/auth/google');
+  return true;
+};
+
+export const resetPass = async data => {
+  const { data: result } = await instance.post('/api/auth/password', data);
+  return result;
 };

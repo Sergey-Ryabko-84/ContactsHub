@@ -69,3 +69,15 @@ export const googleAuth = createAsyncThunk(
     }
   }
 );
+
+export const resetPass = createAsyncThunk(
+  'auth/password',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await api.resetPass(data);
+      return result;
+    } catch ({ response }) {
+      return rejectWithValue(response.data);
+    }
+  }
+);

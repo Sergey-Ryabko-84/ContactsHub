@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { googleAuth, login, logout, refreshUser, register } from './operations';
+import { googleAuth, login, logout, refreshUser, register, resetPass } from './operations';
 
-const extraOperations = [googleAuth, login, logout, refreshUser, register];
+const extraOperations = [googleAuth, login, logout, refreshUser, register, resetPass];
 
 const getOperations = type => {
   return isAnyOf(...extraOperations.map(operation => operation[type]));
