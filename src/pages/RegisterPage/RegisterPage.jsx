@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 import RegisterForm from '../../modules/RegisterForm/RegisterForm';
 import GoogleButton from '../../components/Buttons/GoogleButton/GoogleButton';
 import {
@@ -27,7 +28,14 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const onRegister = data => {
-    dispatch(register(data));
+    dispatch(register(data))
+      .unwrap()
+      .then(({ user }) => {
+        toast.success(`Welcome, ${user.name}!`);
+      })
+      .catch(error => {
+        toast.error(`Error: ${error.message}`);
+      });;
   };
 
   const onGoogleAuth = () => {

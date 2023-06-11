@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 import LoginForm from '../../modules/LoginForm/LoginForm';
 import GoogleButton from '../../components/Buttons/GoogleButton/GoogleButton';
 import {
@@ -27,7 +28,14 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const onLogin = data => {
-    dispatch(login(data));
+    dispatch(login(data))
+      .unwrap()
+      .then()
+      .catch(error => {
+        toast.error(
+          'An error has occurred, please check the correctness of your login credentials.'
+        );
+      });
   };
 
   const onGoogleAuth = () => {
