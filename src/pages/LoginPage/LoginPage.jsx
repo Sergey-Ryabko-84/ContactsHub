@@ -10,6 +10,7 @@ import {
   FormSection,
   Link,
   LogoIcon,
+  LogoWrapper,
   PageWrapper,
   Span,
   Text,
@@ -46,7 +47,9 @@ const LoginPage = () => {
   return (
     <PageWrapper>
       <FormSection>
-        <LogoIcon size={42} />
+        <LogoWrapper>
+          <LogoIcon size={42} />
+        </LogoWrapper>
         <Title>Welcome back</Title>
         <LoginForm
           onSubmit={onLogin}
@@ -67,6 +70,7 @@ const LoginPage = () => {
             displaySpinner={isLoading && isGoogleLoading}
           />
         </AlternateWrapper>
+        <Link to="/auth/reset-password">Forgot password?</Link>
         {isLoading && <ConnectionWaitingMsg />}
       </FormSection>
     </PageWrapper>

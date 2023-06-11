@@ -7,6 +7,9 @@ import Layout from './modules/Layout/Layout';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const RsetPasswordPage = lazy(() =>
+  import('./pages/RsetPasswordPage/RsetPasswordPage')
+);
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
@@ -19,6 +22,7 @@ const AppRoutes = () => {
             <Route index element={<HomePage />} />
             <Route path="auth/register" element={<RegisterPage />} />
             <Route path="auth/login" element={<LoginPage />} />
+            <Route path="auth/reset-password" element={<RsetPasswordPage />} />
           </Route>
           <Route element={<PrivateRoute redirectTo="/auth/login" />}>
             <Route path="app/contacts" element={<ContactsPage />} />

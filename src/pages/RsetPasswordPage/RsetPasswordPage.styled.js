@@ -18,7 +18,7 @@ export const FormSection = styled.section`
 
 export const LogoWrapper = styled.div`
   width: 100%;
-  height: 25vh;
+  height: 34vh;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -30,12 +30,14 @@ export const LogoIcon = styled(TiContacts)`
 
 export const Title = styled.h1`
   padding: 26px;
-  font-size: 32px;
+  font-size: 28px;
 `;
 
 export const Text = styled.p`
-  margin-top: 20px;
+  padding: 0 50px;
+  text-align: center;
   font-size: 14px;
+  line-height: 1.5;
 `;
 
 export const Link = styled(NavLink)`
@@ -43,47 +45,4 @@ export const Link = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   color: #ff6534;
-`;
-
-export const Divider = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 26px 40px;
-`;
-
-export const Span = styled.span`
-  position: relative;
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  text-transform: uppercase;
-
-  ::before {
-    content: '';
-    position: absolute;
-    top: 6px;
-    display: block;
-    width: 43%;
-    height: 1px;
-    background-color: #c9c9c9;
-  }
-
-  ::after {
-    content: '';
-    position: absolute;
-    top: 6px;
-    right: 0;
-    display: block;
-    width: 43%;
-    height: 1px;
-    background-color: #c9c9c9;
-  }
-`;
-
-export const AlternateWrapper = styled.div`
-  width: 100%;
-  padding: 0 40px;
-  margin-bottom: 12px;
 `;

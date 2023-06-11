@@ -10,6 +10,7 @@ import {
   FormSection,
   Link,
   LogoIcon,
+  LogoWrapper,
   PageWrapper,
   Span,
   Text,
@@ -46,7 +47,9 @@ const RegisterPage = () => {
   return (
     <PageWrapper>
       <FormSection>
-        <LogoIcon size={42} />
+        <LogoWrapper>
+          <LogoIcon size={42} />
+        </LogoWrapper>
         <Title>Create your account</Title>
         <RegisterForm
           onSubmit={onRegister}
