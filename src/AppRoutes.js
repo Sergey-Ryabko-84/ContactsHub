@@ -10,6 +10,7 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ResetPasswordPage = lazy(() =>
   import('./pages/ResetPasswordPage/ResetPasswordPage')
 );
+const CheckEmailPage = lazy(() => import('./pages/CheckEmailPage/CheckEmailPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
@@ -23,6 +24,7 @@ const AppRoutes = () => {
             <Route path="auth/register" element={<RegisterPage />} />
             <Route path="auth/login" element={<LoginPage />} />
             <Route path="auth/reset-password" element={<ResetPasswordPage />} />
+            <Route path="auth/check-email" element={<CheckEmailPage />} />
           </Route>
           <Route element={<PrivateRoute redirectTo="/auth/login" />}>
             <Route path="app/contacts" element={<ContactsPage />} />

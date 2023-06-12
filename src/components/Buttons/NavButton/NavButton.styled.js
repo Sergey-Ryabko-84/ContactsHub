@@ -10,16 +10,19 @@ export const Button = styled(NavLink)`
   height: 52px;
   padding: 12px;
   border-radius: 8px;
-  background-color: #ff6534;
-  color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.bordercolor};
+  background-color: ${props => props.bgcolor};
+  color: ${props => props.color};
   transition: background-color 250ms;
 
   :hover,
   :focus {
-    background-color: #dd5626;
+    background-color: ${props => props.bghovcolor};
   }
 
   :active {
-    background-color: #ab300b;
+    background-color: ${props => props.bgactvcolor};
   }
 `;

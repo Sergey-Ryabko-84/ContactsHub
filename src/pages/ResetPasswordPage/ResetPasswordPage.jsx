@@ -13,17 +13,22 @@ import {
 import { selectIsLoading } from '../../redux/auth/selectors';
 import { resetPass } from '../../redux/auth/operations';
 import ConnectionWaitingMsg from '../../components/ConnectionWaitingMsg/ConnectionWaitingMsg';
+import { useNavigate } from 'react-router-dom';
 
 const ResetPasswordPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onResetPassword = data => {
+    const email = data.email
     dispatch(resetPass(data))
       .unwrap()
-      .then()
+      .then((data) => {
+        toast.success(`${data.message}`);
+        navigate('/auth/check-email', { state: {email} });
+      })
       .catch(error => {
-        console.dir(error);
         toast.error(`${error.message}`);
       });
   };
